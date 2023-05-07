@@ -4,6 +4,8 @@ use std::{
     process,
 };
 
+use scanner::scanner::Scanner;
+
 pub mod scanner;
 
 // TODO: need to implement hadError global variable
@@ -44,14 +46,13 @@ fn run_prompt() -> Result<(), io::Error> {
 }
 
 fn run(source: String) {
-    //TODO: Add scanner
-    println!("{source}")
-}
-
-fn error(line: i32, message: String) {
-    report(line, "", message)
-}
-
-fn report(line: i32, location: &str, message: String) {
-    println!("[line {line}] Error {location}: {message}")
+    let mut scanner = Scanner::new(source);
+    match scanner.scan_tokens() {
+        Ok(v) => println!("{:?}",v),
+        Err(v) => {
+            for error in v {
+                println!("{:?}", error)
+            }
+        }
+    }
 }
