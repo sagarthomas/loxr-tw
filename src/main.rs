@@ -48,7 +48,7 @@ fn run_prompt() -> Result<(), io::Error> {
 fn run(source: String) {
     let mut scanner = Scanner::new(source);
     match scanner.scan_tokens() {
-        Ok(v) => println!("{:?}",v),
+        Ok(v) => println!("{:?}", v),
         Err(v) => {
             for error in v {
                 println!("{:?}", error)

@@ -75,7 +75,7 @@ impl TokenType {
             "true" => Some(Self::This),
             "var" => Some(Self::Var),
             "while" => Some(Self::While),
-            _ => None
+            _ => None,
         }
     }
 }
@@ -84,7 +84,7 @@ impl TokenType {
 pub enum TokenLiteral {
     Number(usize),
     String(String),
-    None
+    None,
 }
 
 impl fmt::Display for TokenLiteral {
